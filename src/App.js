@@ -9,22 +9,7 @@ import axios from 'axios';
 
 function App() {
   const queryClient = new QueryClient();
-  const [data,setData] = useState([]);
-
-  // const fetchJSONData = async () => {
-  //   const response = await fetch(' http://localhost:3000/user');
-  //   // const data = await response.json();
-  //   console.log(response);
-  //   return [...data];
-  // };
-
-  useEffect(() =>{
-      const getFetchRequest = async()=>{
-        var data = [];
-        const fetchdata = await axios.get(`http://localhost:3000/user`);
-        if(!fetchdata){
-        data = [
-                    {
+  const [data,setData] = useState([ {
                       name: 'Jane Cooper',
                       email: 'jane.cooper@example.com',
                       title: 'Regional Paradigm Technician',
@@ -89,11 +74,20 @@ function App() {
                       age: 24,
                       lastlogin: String(new Date()),
                       imgUrl: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-                    },
-                  ]
-        }else{
-          data = fetchdata;
-        }
+                    },]);
+
+  // const fetchJSONData = async () => {
+  //   const response = await fetch(' http://localhost:3000/user');
+  //   // const data = await response.json();
+  //   console.log(response);
+  //   return [...data];
+  // };
+
+  useEffect(() =>{
+      const getFetchRequest = async()=>{
+        const fetchdata = await axios.get(`http://localhost:3000/user`);
+        
+        
         console.log([...data.data,...data.data]);
         setData([...data.data,...data.data,...data.data,...data.data,...data.data,...data.data,...data.data,...data.data,...data.data]);
       }
